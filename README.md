@@ -6,11 +6,11 @@ This repository contains a script and configuration file to automate the process
 ## Prerequisites
 
 - **Ansible**: Ensure Ansible is installed on the system where you will run the script.
-- **Access to Ansible Galaxy Server**: You need access to an Ansible Galaxy server with appropriate permissions and a valid API token.
+- **Access to a Private Automation Hub**: You need access to a Private Automation Hub / custom Ansible Galaxy server with appropriate permissions and a valid API token.
 
 ## Parametrizing the `ansible.cfg` File
 
-The `ansible.cfg` file is used to configure the Ansible environment, particularly the settings for interacting with an Ansible Galaxy server. The configuration file in this project is set up to connect to a custom Galaxy server. You can parameterize this configuration to use different servers or tokens.
+The `ansible.cfg` file is used to configure the Ansible environment, particularly the settings for interacting with a Private Automation Hub. The configuration file in this project is set up to connect to a Private Automation Hub. You can parameterize this configuration to use different servers or tokens.
 
 ### Template `ansible.cfg` File
 
@@ -21,19 +21,19 @@ Below is the template for the `ansible.cfg` file:
 server_list = my_repo
 
 [galaxy_server.my_repo]
-url={{ galaxy_server_url }}
-token={{ galaxy_server_token }}
+url={{ server_url }}
+token={{ server_token }}
 ```
 
 ### Parameters
 
-- **`galaxy_server_url`**: The URL of the Ansible Galaxy server.
-- **`galaxy_server_token`**: The API token for authentication with the Galaxy server.
+- **`server_url`**: The URL of the Ansible Galaxy server.
+- **`server_token`**: The API token for authentication with the Galaxy server.
 
 ### Creating a Parameterized `ansible.cfg`
 
 1. **Copy the Template**: Use the above template as your `ansible.cfg` file.
-2. **Replace Parameters**: Replace `{{ galaxy_server_url }}` with the actual URL of your Galaxy server and `{{ galaxy_server_token }}` with your API token.
+2. **Replace Parameters**: Replace `{{ server_url }}` with the actual URL of your Galaxy server and `{{ server_token }}` with your API token.
 
 Alternatively, you can use environment variables or dynamically generate this configuration file within your script if needed.
 
@@ -87,5 +87,3 @@ This command will clone the repository from `https://github.com/daleroux/ansible
 After the script completes its execution, it removes the cloned repository directory to keep your workspace clean. If you want to retain the repository directory for any reason, you can modify or comment out the cleanup step in the script.
 
 ---
-
-This README provides the necessary instructions to parametrize the `ansible.cfg` file and effectively use the `git-2-hub.sh` script to automate Ansible collection management tasks.
