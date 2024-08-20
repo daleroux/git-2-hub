@@ -1,9 +1,7 @@
 
 # Git-2-Hub
 
-This repository contains a script and configuration file to automate the process of cloning an Ansible co
-llection from a Git repository, building it, and publishing it to an Private Automation Hub. This README 
-will guide you through parametrizing the `ansible.cfg` file and using the `git-2-hub.sh`
+This repository contains a script and configuration file to automate the process of cloning an Ansible collection from a Git repository, building it, and publishing it to an Private Automation Hub.  It's a workaround for the following RFE: [RFE] ability to sync/upload collections from a Git Repo to the Private Automation Hub. This READMEwill guide you through parametrizing the `ansible.cfg` file and using the `git-2-hub.sh`
 
 ## Prerequisites
 
@@ -44,7 +42,7 @@ Make sure the namespace of your collection exists in your Private Automation Hub
 
 ## Using the `git-2-hub.sh` Script
 
-The provided script automates the process of building and publishing an Ansible collection. The script now takes only one argument, which is the full Git repository URL. It addresses the following RFE: [RFE] ability to sync/upload collections from a Git Repo to the Private Automation Hub.
+The provided script automates the process of building and publishing an Ansible collection. The script now takes only one argument, which is the full Git repository URL. 
 
 ### Script Overview
 
@@ -69,7 +67,7 @@ The script now takes a single parameter:
 2. **Run the script** with the appropriate parameters:
 
    ```bash
-   ./git-2-hub.sh <full URL of the Git repository>
+   ./git-2-hub.sh <FULL_GIT_REPO_URL>
    ```
 
    - Example:
