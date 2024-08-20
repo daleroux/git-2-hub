@@ -1,17 +1,20 @@
 #!/usr/bin/bash
 
-# Define variables for the Git repository and repository name
-GIT_REPO_BASE_URL=$1   # The base URL including user or group name, e.g., "https://github.com/daleroux/"
-REPO_NAME=$2           # The repository name, e.g., "ansible-collection-hello_tam_blog"
+# Define the full Git repository URL as a single parameter
+FULL_GIT_REPO_URL=$1
 
-# Check if both parameters are provided
-if [ -z "$GIT_REPO_BASE_URL" ] || [ -z "$REPO_NAME" ]; then
-    echo "Usage: $0 <git-repo-base-url> <repo-name>"
+# Check if the parameter is provided
+if [ -z "$FULL_GIT_REPO_URL" ]; then
+    echo "Usage: $0 <full-git-repo-url>"
     exit 1
 fi
 
+# Extract the base URL and repository name from the full URL
+GIT_REPO_BASE_URL=$(dirname "$FULL_GIT_REPO_URL")
+REPO_NAME=$(basename "$FULL_GIT_REPO_URL")
+
 # Clone the git repository
-git clone "${GIT_REPO_BASE_URL}/${REPO_NAME}"
+git clone "${FULL_GIT_REPO_URL}"
 
 # Change directory to the cloned repo
 cd "./${REPO_NAME}"
